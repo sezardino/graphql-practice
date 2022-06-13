@@ -32,7 +32,7 @@ export const mutation = new GraphQLObjectType({
     removeClient: {
       type: ClientType,
       args: {
-        id: { type: new GraphQLNonNull(GraphQLString) },
+        id: { type: new GraphQLNonNull(GraphQLID) },
       },
       resolve(_, args) {
         return Client.findByIdAndRemove(args.id);
