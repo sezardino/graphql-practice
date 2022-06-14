@@ -48,3 +48,7 @@ code {
 .icon {
   margin-right: 5px;
 }
+
+ul {
+  list-style: none;
+}
