@@ -24,3 +24,7 @@ export type ClientInput = Pick<IClient, "email" | "name" | "phone">;
 export type ProjectInput = Pick<IProject, "description" | "name"> & {
   clientId: string;
 };
+
+export type UpdateProjectInput = Partial<
+  Pick<IProject, "description" | "name" | "status">
+>;

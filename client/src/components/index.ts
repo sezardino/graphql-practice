@@ -5,5 +5,7 @@ export * from "./Modal";
 export * from "./AddClientForm";
 export * from "./AddProjectForm";
 export * from "./ProjectCard";
-export * from './Projects'
-export * from './ViewComponent';
+export * from "./Projects";
+export * from "./ViewComponent";
+export * from "./ClientInfo";
+export * from "./EditProjectForm";
