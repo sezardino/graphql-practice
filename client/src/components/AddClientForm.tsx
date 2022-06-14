@@ -17,7 +17,14 @@ export const AddClientForm: React.FC<Props> = (props) => {
       return;
     }
 
-    props.submitHandler({ name, email, phone });
+    try {
+      props.submitHandler({ name, email, phone });
+      setEmail("");
+      setName("");
+      setPhone("");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

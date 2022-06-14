@@ -16,7 +16,6 @@ export const Home = () => {
     data: clientsData,
     loading: clientsLoading,
     error: clientsError,
-    refetch: clientsRefetch,
   } = useQuery<{ clients: IClient[] }>(queries.GET_CLIENTS);
   const {
     data: projectsData,
@@ -24,18 +23,23 @@ export const Home = () => {
     error: projectsError,
     refetch: projectsRefetch,
   } = useQuery<{ projects: IProject[] }>(queries.GET_PROJECTS);
-  const [deleteClientHandler] = useMutation(mutations.REMOVE_CLIENT);
-  const [addClientMutation] = useMutation(mutations.ADD_CLIENT);
+  const [deleteClientHandler] = useMutation(mutations.REMOVE_CLIENT, {
+    refetchQueries: [
+      { query: queries.GET_PROJECTS },
+      { query: queries.GET_CLIENTS },
+    ],
+  });
+  const [addClientMutation] = useMutation(mutations.ADD_CLIENT, {
+    refetchQueries: [{ query: queries.GET_CLIENTS }],
+  });
   const [addProjectMutation] = useMutation(mutations.ADD_PROJECT);
 
   const handleDelete = async (id: string) => {
     await deleteClientHandler({ variables: { id } });
-    clientsRefetch();
   };
 
   const addClientHandler = async (data: ClientInput) => {
     await addClientMutation({ variables: { ...data } });
-    clientsRefetch();
   };
 
   const addProjectHandler = async (data: ProjectInput) => {
@@ -57,7 +61,7 @@ export const Home = () => {
           }
           content={<AddClientForm submitHandler={addClientHandler} />}
         />
-        {clientsData?.clients && clientsData.clients.length && (
+        {clientsData?.clients && clientsData.clients.length > 0 && (
           <Modal
             label="Add Project"
             name="add-project"

@@ -19,7 +19,14 @@ export const AddProjectForm: React.FC<Props> = (props) => {
       return;
     }
 
-    submitHandler({ name, clientId, description });
+    try {
+      submitHandler({ name, clientId, description });
+      setName("");
+      setDescription("");
+      setClientId("");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
