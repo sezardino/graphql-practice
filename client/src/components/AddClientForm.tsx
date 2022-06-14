@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { IClient } from "../types";
+import { ClientInput } from "../types";
 
 interface Props {
-  submitHandler: (data: Pick<IClient, "email" | "name" | "phone">) => void;
+  submitHandler: (data: ClientInput) => void;
 }
 
 export const AddClientForm: React.FC<Props> = (props) => {
@@ -17,7 +17,6 @@ export const AddClientForm: React.FC<Props> = (props) => {
       return;
     }
 
-    console.log(3);
     props.submitHandler({ name, email, phone });
   };
 
