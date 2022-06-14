@@ -59,7 +59,11 @@ export const AddClientForm: React.FC<Props> = (props) => {
         </label>
       </div>
 
-      <button type="submit" className="btn btn-secondary">
+      <button
+        type="submit"
+        data-bs-dismiss="modal"
+        className="btn btn-secondary"
+      >
         Submit
       </button>
     </form>
