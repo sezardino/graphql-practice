@@ -28,3 +28,19 @@ export type ProjectInput = Pick<IProject, "description" | "name"> & {
 export type UpdateProjectInput = Partial<
   Pick<IProject, "description" | "name" | "status">
 >;
+
+export interface Tokens {
+  access: string;
+  refresh: string;
+}
+
+export interface User {
+  id: string;
+  username: string;
+  password: string;
+  email: string;
+  tokens: Tokens;
+}
+
+export type ContextUser = Pick<User, "email" | "id" | "username">;
+export type RefreshUser = Pick<User, "email" | "id" | "username" | "tokens">;

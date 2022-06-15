@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components";
-import { Home, NotFound, Projects } from "./views";
+import { Auth, Home, NotFound, Projects } from "./views";
 
 export const App = () => {
   return (
@@ -9,6 +9,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects/:id" element={<Projects />} />
+        <Route path="/auth" element={<Auth />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
